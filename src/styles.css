@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+    height: calc(100% - 20px);
+}
+
+body {
+    margin: 0px;
+    height: 100%;
+    position: relative;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+}

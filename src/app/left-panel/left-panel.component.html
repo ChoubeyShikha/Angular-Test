@@ -1,0 +1,111 @@
+<div class="left_container">
+  <div class="item_detail_container">
+    <header class="item_header">
+      <span class="products_header">PRODUCTS</span>
+      <span class="price_header">PRICE</span>
+      <span class="quantity_header">QUANTITY</span>
+      <span class="total_header">TOTAL</span>
+    </header>
+    <div class="items">
+      <div class="no_item" *ngIf="addedItem.length === 0">
+        <span>THERE ARE NO PRODUCTS</span>
+      </div>
+      <div *ngIf="addedItem.length !== 0">
+        <div class="item_card" *ngFor="let item of addedItem; let i=index">
+          <img class="close_icon" src="assets/close.jpeg" (click)="onClickClose(item,i)">
+          <span class="item_name">{{item.name}}</span>
+          <span class="item_price">{{item.price}}</span>
+          <span class="item_quantity">
+            <button class="btn" (click)="decreaseQuantity(item, i)">-</button>
+            <span class="quantity">{{item.quantity}}</span>
+            <button class="btn" (click)="increaseQuantity(item)">+</button>
+          </span>
+          <span class="item_total">{{item.quantity * item.price}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="item_sub_details">
+      <div class="price_total">
+        <span class="sub_total_label">Sub Total</span>
+        <span class="sub_total_price">{{subTotalPrice}} Rs</span>
+        <span class="items_count">{{totalQuantity}} Items</span>
+      </div>
+      <div class="price_total">
+        <span class="sub_total_label">VAT Tax</span>
+        <span class="sub_total_price">10%</span>
+        <span class="items_count">{{vatPrice}} Rs</span>
+      </div>
+      <div class="price_total">
+        <span class="sub_total_label">Discount</span>
+        <span class="sub_total_price">10%</span>
+        <span class="items_count">{{discountPrice}} Rs</span>
+      </div>
+      <div class="price_total">
+        <span class="sub_total_label">Total</span>
+        <span class="sub_total_price">{{totalItemPrice}} Rs</span>
+        <span class="items_count"></span>
+      </div>
+    </div>
+    <footer class="sale_button">
+      <button class="cancel_sale_button" (click)="onClickCancel()">CANCEL SALE</button>
+      <button class="process_sale_button" (click)="onClickProcess()">PROCESS SALE</button>
+    </footer>
+  </div>
+</div>
+
+<div class="main" *ngIf="showRecieptBox">
+  <div class="reciept_box_container">
+    <div class="light_box_container">
+      <div class="box_container">
+        <div class="sub_header">
+          <span>
+            <span style="margin-left: 5px;">Reciept</span>
+          </span>
+        </div>
+        <div class="details_container">
+          <div class="sale_number">
+            <span>Sale N0...</span>
+            <span>01237</span>
+          </div>
+          <div class="date" style="margin-bottom: 10px;">Date: {{currentDate}}</div>
+          <div class="product_header">
+            <span class="small_width">#</span>
+            <span class="large_width">Products</span>
+            <span class="large_width">Quantity</span>
+            <span class="large_width">Sub Total</span>
+          </div>
+          <div class="divider"></div>
+          <div class="items_detail" *ngFor="let item of addedItem; let i=index">
+            <span class="small_width">{{i+1}}</span>
+            <span class="large_width">{{item.name}}</span>
+            <span class="large_width">{{item.quantity}}</span>
+            <span class="large_width">{{item.price * item.quantity}}</span>
+          </div>
+          <div class="divider"></div>
+          <div class="total_container">
+            <span>Total Items</span>
+            <span class="large_width">{{totalQuantity}}</span>
+            <span>Total</span>
+            <span class="large_width">{{totalItemPrice}} Rs</span>
+          </div>
+          <div class="divider"></div>
+          <div class="discount_container">
+            <span class="empty_container"></span>
+            <span>Discount</span>
+            <span class="large_width">10%</span>
+          </div>
+          <div class="divider"></div>
+          <div class="vat_container">
+            <span class="empty_container"></span>
+            <span>VAT</span>
+            <span class="large_width" style="margin-left: 29px;">10%</span>
+          </div>
+          <div class="divider"></div>
+        </div>
+        <footer class="sub_footer">
+          <button class="close_button" (click)="clickClose()">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>

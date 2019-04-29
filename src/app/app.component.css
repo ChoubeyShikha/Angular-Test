@@ -1,0 +1,17 @@
+.main_container {
+	width: auto;
+	height: 100%;
+	padding: 10px;
+	display: flex;
+}
+
+.left_panel {
+	width: 40%;
+	background-color: lightgray;
+}
+
+.right_panel {
+	width: 60%;
+	background-color: lightgray;
+	margin-left: 5px;
+}

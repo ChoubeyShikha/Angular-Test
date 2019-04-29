@@ -1,0 +1,6 @@
+<div class="right_container">
+  <span class="items_container" *ngFor="let item of items">
+    <div class="item_icon_container" *ngIf="! item.image" (click)="onClickImage(item)"></div>
+    <img class="item_icon" src="assets/{{item.image}}" *ngIf="item.image" (click)="onClickImage(item)">
+  </span>
+</div>
